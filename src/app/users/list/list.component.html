@@ -1,1 +1,9 @@
 <p>list works!</p>
+
+<ul *ngIf="$users | async as userList">
+  <li *ngFor="let user of userList.users">
+    Id: {{ user.id }}<br />
+    Username: {{ user.username }}<br />
+    Password: {{user.password }}
+  </li>
+</ul>

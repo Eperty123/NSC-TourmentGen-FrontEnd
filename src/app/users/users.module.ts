@@ -17,7 +17,7 @@ import { DetailsComponent } from './details/details.component';
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
   ]
 })
 export class UsersModule { }
