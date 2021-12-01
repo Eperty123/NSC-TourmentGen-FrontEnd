@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CreateComponent,
     DeleteComponent,
     ListComponent,
-    DetailsComponent
+    DetailsComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,

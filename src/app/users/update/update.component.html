@@ -1,0 +1,23 @@
+<form [formGroup]="updateForm" (ngSubmit)="doUpdate()">
+  <label for="id">User ID: </label><br />
+  <input [readOnly]="true" id="id" type="text" formControlName="id">
+  <br />
+  <label for="username">Username: </label><br />
+  <input id="username" type="text" formControlName="username">
+
+  <br />
+
+  <div *ngIf="name && name.invalid && (name.dirty || name.touched)"
+       class="alert alert-danger">
+
+    <div *ngIf="name.errors?.required">
+      Name is required.
+    </div>
+  </div>
+
+  <br /><br />
+
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="!updateForm.valid">Save</button>
+</form>
