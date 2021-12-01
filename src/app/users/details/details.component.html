@@ -1,1 +1,7 @@
-<p>details works!</p>
+<form [formGroup]="detailsForm">
+  <label for="id">User ID</label><br />
+  <input [readOnly]="true" id="id" type="text" formControlName="id">
+  <br />
+  <label for="username">UserName</label> <br />
+  <input [readOnly]="true" id="username" type="text" formControlName="username">
+</form>
