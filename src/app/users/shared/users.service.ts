@@ -17,10 +17,14 @@ export class UsersService {
       .get<UserList>(environment.api + '/User');
   }
 
-  register(username: string, password: string): Observable<UserDto> {
+  registerUser(username: string, password: string): Observable<UserDto> {
     return this._http.post<UserDto>(environment.api + '/User', {
       username,
       password
     });
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this._http.delete(environment.api + '/User/' + id);
   }
 }
