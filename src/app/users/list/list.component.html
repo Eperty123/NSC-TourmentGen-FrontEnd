@@ -1,1 +1,7 @@
-<p>list works!</p>
+<h1>List of users</h1>
+<a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+<ul *ngIf="$users | async as userList">
+  <li *ngFor="let user of userList.userList">
+    Id: {{user.id}}<br />  Name: {{user.username}} <br /> Password: {{user.password}}
+  </li>
+</ul>
