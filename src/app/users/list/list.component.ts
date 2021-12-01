@@ -10,7 +10,6 @@ import { UsersService } from '../shared/users.service';
 })
 export class ListComponent implements OnInit {
   $users: Observable<UserList> | undefined;
-
   constructor(private _service: UsersService) { }
 
   ngOnInit(): void {
