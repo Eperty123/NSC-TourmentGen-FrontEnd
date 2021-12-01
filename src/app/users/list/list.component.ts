@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserList} from "../shared/user-list";
-import {Observable} from "rxjs";
-import {UsersService} from "../shared/users.service";
+import { Observable } from 'rxjs';
+import { UserList } from '../shared/user-list';
+import { UsersService } from '../shared/users.service';
 
 @Component({
   selector: 'app-list',
@@ -10,8 +10,7 @@ import {UsersService} from "../shared/users.service";
 })
 export class ListComponent implements OnInit {
   $users: Observable<UserList> | undefined;
-
-  constructor(private _service : UsersService) { }
+  constructor(private _service: UsersService) { }
 
   ngOnInit(): void {
     this.$users = this._service.getUsers();

@@ -5,6 +5,7 @@ import {UserList} from "./user-list";
 import {environment} from "../../../environments/environment";
 import {UserDto} from "./user.dto";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +19,13 @@ export class UsersService {
       .get<UserList>(environment.api + '/User');
   }
 
+
+  register(username: string, password: string): Observable<UserDto> {
+    return this._http.post<UserDto>(environment.api + '/User', {
+      username,
+      password
+    });
+    
   getUser(id: number): Observable<UserDto> {
     return this._http
       .get<UserDto>(environment.api + '/User/' + id);
@@ -26,5 +34,6 @@ export class UsersService {
   updateUser(user: UserDto): Observable<UserDto> {
     return this._http
       .put<UserDto>(environment.api + '/User/' + user.id, user);
+
   }
 }

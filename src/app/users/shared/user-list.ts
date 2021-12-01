@@ -1,5 +1,5 @@
-import {UserDto} from "./user.dto";
+import { UserDto } from "./user.dto";
 
-export  interface UserList {
-userList: UserDto[];
+export interface UserList {
+  userList: UserDto[];
 }
