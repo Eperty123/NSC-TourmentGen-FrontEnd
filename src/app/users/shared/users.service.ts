@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {UserList} from "./user-list";
-import {environment} from "../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { UserList } from "./user-list";
+import { environment } from "../../../environments/environment";
+import { UserDto } from './user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,14 @@ export class UsersService {
   constructor(private _http: HttpClient) { }
 
   getUsers(): Observable<UserList> {
-  return this._http
-    .get<UserList>(environment.api + '/User');
+    return this._http
+      .get<UserList>(environment.api + '/User');
+  }
+
+  register(username: string, password: string): Observable<UserDto> {
+    return this._http.post<UserDto>(environment.api + '/User', {
+      username,
+      password
+    });
   }
 }
