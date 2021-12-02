@@ -24,7 +24,8 @@ export class UsersService {
       username,
       password
     });
-    
+  }
+
   getUser(id: number): Observable<UserDto> {
     return this._http
       .get<UserDto>(environment.api + '/User/' + id);
