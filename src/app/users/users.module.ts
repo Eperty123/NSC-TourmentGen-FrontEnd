@@ -6,7 +6,6 @@ import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
 import { DetailsComponent } from './details/details.component';
-import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import { UpdateComponent } from './update/update.component';
 

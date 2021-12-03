@@ -7,6 +7,11 @@ const routes: Routes = [
     loadChildren: () => import('./users/users.module')
       .then(m => m.UsersModule)
   },
+  {
+    path: 'tournaments',
+    loadChildren: () => import('./tournaments/tournaments.module')
+      .then(t => t.TournamentsModule)
+  },
 ];
 
 @NgModule({
