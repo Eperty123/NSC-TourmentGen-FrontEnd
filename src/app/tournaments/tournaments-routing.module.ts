@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {DetailsComponent} from "../users/details/details.component";
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-
   {
-    path: 'details/:id',
-    component: DetailsComponent
+    path: '',
+    component: ListComponent,
   },
 ];
 
@@ -14,6 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TournamentsRoutingModule {
-
-}
+export class TournamentsRoutingModule { }

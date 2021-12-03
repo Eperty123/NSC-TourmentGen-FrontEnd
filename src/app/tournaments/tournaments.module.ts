@@ -2,18 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TournamentsRoutingModule } from './tournaments-routing.module';
-import { DetailsComponent } from './details/details.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { ListComponent } from './list/list.component';
 
 
 @NgModule({
   declarations: [
-    DetailsComponent
+    ListComponent
   ],
   imports: [
     CommonModule,
-    TournamentsRoutingModule,
-    ReactiveFormsModule
+    TournamentsRoutingModule
   ]
 })
 export class TournamentsModule { }

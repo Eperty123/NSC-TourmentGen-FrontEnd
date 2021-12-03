@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'tournaments',
     loadChildren: () => import('./tournaments/tournaments.module')
-      .then(t => t.TournamentsModule)
+      .then(m => m.TournamentsModule)
   },
 ];
 

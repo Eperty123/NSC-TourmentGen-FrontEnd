@@ -1,1 +1,31 @@
-<p>delete works!</p>
+<h1>Delete</h1>
+<div *ngIf="$success" class="alert alert-success">
+  <div class="text-center">
+    {{ $success }}
+  </div>
+</div>
+
+<div *ngIf="$error" class="alert alert-danger">
+  <div class="text-center">
+    {{ $error }}
+  </div>
+</div>
+
+<!--<div *ngIf="id?.invalid && (id?.dirty || id?.touched)"
+     class="alert alert-danger">
+
+  <div *ngIf="id?.errors?.['required']">
+    Id is required.
+  </div>
+
+  <div *ngIf="id?.errors?.['minlength']">
+    Id requires atleast 1 character.
+  </div>
+</div>-->
+
+<form [formGroup]="deleteForm" (ngSubmit)="delete()">
+
+  <label for="id">Id: </label>
+  <input id="id" type="text" formControlName="id" required>
+  <button type="submit">Delete</button>
+</form>
