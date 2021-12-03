@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {DetailsComponent} from "./details/details.component";
 import {UpdateComponent} from "./update/update.component";
 import { CreateComponent } from "./create/create.component";
+import { DeleteComponent } from './delete/delete.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
@@ -10,12 +11,6 @@ const routes: Routes = [
     path: '',
     component: ListComponent,
   },
-  
-  {
-    path: 'update/:id',
-    component: UpdateComponent
-  },
-
   {
     path: 'details/:id',
     component: DetailsComponent
@@ -23,7 +18,11 @@ const routes: Routes = [
   {
     path: 'create',
     component: CreateComponent
-  }
+  },
+  {
+    path: 'delete',
+	component: DeleteComponent,
+  },
 
 ];
 

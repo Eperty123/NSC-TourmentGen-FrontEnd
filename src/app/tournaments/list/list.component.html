@@ -1,0 +1,7 @@
+<h1>List of tournaments</h1>
+<a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+<ul *ngIf="$tournaments | async as tournaments">
+  <li *ngFor="let tournament of tournaments.tournamentList">
+    #{{ tournament.id }} - Name: {{ tournament.name }} - <a routerLink="details/{{ tournament.id }}">Details</a> - <a routerLink="update/{{ tournament.id}}">Edit</a> - <a routerLink="delete/{{ tournament.id }}">Delete</a>
+  </li>
+</ul>

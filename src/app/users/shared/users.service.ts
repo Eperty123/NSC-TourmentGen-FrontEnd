@@ -19,8 +19,7 @@ export class UsersService {
       .get<UserList>(environment.api + '/User');
   }
 
-
-  register(username: string, password: string): Observable<UserDto> {
+  registerUser(username: string, password: string): Observable<UserDto> {
     return this._http.post<UserDto>(environment.api + '/User', {
       username,
       password
@@ -36,5 +35,9 @@ export class UsersService {
     return this._http
       .put<UserDto>(environment.api + '/User/' + user.id, user);
 
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this._http.delete(environment.api + '/User/' + id);
   }
 }
