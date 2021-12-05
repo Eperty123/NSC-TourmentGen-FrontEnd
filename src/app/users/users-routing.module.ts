@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'delete',
 	component: DeleteComponent,
   },
+  {
+    path: 'update',
+    component: UpdateComponent,
+  },
 
 ];
 

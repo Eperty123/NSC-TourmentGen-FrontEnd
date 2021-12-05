@@ -28,4 +28,10 @@ export class TournamentService {
     return this._http.delete(environment.api + '/Tournament/' + id);
 
   }
+
+  updateTournament(tournament: TournamentDto): Observable<TournamentDto> {
+    return this._http
+      .put<TournamentDto>(environment.api + '/Tournament/' + tournament.id, tournament);
+
+  }
 }

@@ -3,6 +3,7 @@ import {UserDto} from "../shared/user.dto";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../shared/users.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {TournamentDto} from "../../tournaments/shared/tournament.dto";
 
 @Component({
   selector: 'app-update',
