@@ -23,4 +23,9 @@ export class TournamentService {
     return this._http
       .get<TournamentDto>(environment.api + '/Tournament/' + id);
   }
+
+  deleteTournament(id: number): Observable<any> {
+    return this._http.delete(environment.api + '/Tournament/' + id);
+
+  }
 }
