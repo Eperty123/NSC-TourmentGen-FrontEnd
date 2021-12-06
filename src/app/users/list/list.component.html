@@ -1,7 +1,11 @@
 <h1>List of users</h1>
-<a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+<div class="centerList">
 <ul *ngIf="$users | async as userList">
   <li *ngFor="let user of userList.userList">
     #{{ user.id }} - Name: {{ user.username }} - <a routerLink="details/{{ user.id }}">Details</a> - <a routerLink="update/{{ user.id}}">Edit</a> - <a routerLink="delete/{{ user.id }}">Delete</a>
   </li>
 </ul>
+</div>
+<div class="homeBtn">
+<a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+</div>
