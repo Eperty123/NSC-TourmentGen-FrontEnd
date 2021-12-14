@@ -1,11 +1,28 @@
-<h1>NSC Tournament Generator</h1>
-<div class="btn">
-  <div class="btnUsers">
-    <a routerLink="users" class="btn btn-sm btn-primary">See list of users</a>
-  </div>
-  <div class="btnTourney"><a routerLink="tournaments" class="btn btn-sm btn-dark">See list of Tournaments</a></div>
-  <div class="btnTourney"><a routerLink="auth/login" class="btn btn-sm btn-dark">Log In</a></div>
-  <div class="btnTourney"><a routerLink="auth/logout" class="btn btn-sm btn-dark">Log Out</a></div>
-</div>
-<router-outlet></router-outlet>
 
+<div class="row">
+  <div class="col-8 offset-2">
+    <div class="info-box no-padding-vertical no-padding-horizontal text-center">
+      <div class="menu-padding-side navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" routerLink="/">NSC Tournament Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li *ngIf="!isLoggedIn()" class="nav-item">
+              <a class="nav-link" routerLink="auth/login">Log In</a>
+            </li>
+            <li *ngIf="isLoggedIn()" class="nav-item">
+              <a class="nav-link" routerLink="tournaments">Tournaments</a>
+            </li>
+            <li *ngIf="isLoggedIn()" class="nav-item">
+              <a class="nav-link" routerLink="auth/logout">Log Out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Actual content start -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

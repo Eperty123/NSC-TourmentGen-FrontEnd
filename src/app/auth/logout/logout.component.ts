@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 
@@ -13,6 +13,6 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this._authService.logout();
+    this._router.navigateByUrl("/");
   }
-
 }
