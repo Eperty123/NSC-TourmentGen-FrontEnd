@@ -1,8 +1,12 @@
-import { TournamentType } from "./tournamenttype";
+import { UserDto } from "../../users/shared/user.dto";
+import { RoundDto } from "./round.dto";
+import { TournamentUserDto } from "./tournamentuser.dto";
 
 export interface TournamentDto {
   id: number;
   name: string;
-  type: TournamentType;
-  participants: string;
+  tournamentUsers: TournamentUserDto[];
+  rounds: RoundDto[];
+  userId: number;
+  user: UserDto;
 }
