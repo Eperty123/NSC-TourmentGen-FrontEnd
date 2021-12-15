@@ -1,7 +1,51 @@
-<form [formGroup]="detailsForm">
-  <label for="id">Tournament ID</label><br />
-  <input [readOnly]="true" id="id" type="text" formControlName="id">
-  <br />
-  <label for="name">Tournament Name</label> <br />
-  <input [readOnly]="true" id="name" type="text" formControlName="name">
-</form>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="info-box text-center">
+      <div class="col-12" *ngIf="selectedTournament != null">
+        <div class="tournament-title"><h1>{{selectedTournament.name }}</h1></div>
+
+        <div class="tournament-bracket tournament-bracket--rounded">
+          <div class="tournament-bracket__round tournament-bracket__round--quarterfinals" *ngFor="let round of selectedTournament.rounds">
+            <h3 class="tournament-bracket__round-title">{{round.name}}</h3>
+
+            <!-- Brackets -->
+            <ul class="tournament-bracket__list text-center" *ngIf="round.brackets.length > 0">
+
+              <!-- Loop through each bracket <3.-->
+              <li class="tournament-bracket__item" *ngFor="let bracket of round.brackets">
+                <div class="tournament-bracket__match" tabindex="0">
+                  <table class="tournament-bracket__table">
+                    <caption class="tournament-bracket__caption">
+                      {{ bracket.round?.name }}
+                    </caption>
+                    <tbody class="tournament-bracket__content">
+
+                      <!-- Participants -->
+
+                      <tr class="tournament-bracket__team">
+
+                        <!-- Must be reversed as for some reason 2 is first and 1 is second??? -->
+                        <!-- Participant 1 -->
+                        <th>{{ bracket.participant2?.name }}</th>
+                        <!-- Participant 2 -->
+                        <th>{{ bracket.participant1?.name }}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <!--<form [formGroup]="detailsForm">
+          <label for="id">Tournament ID</label><br />
+          <input [readOnly]="true" id="id" type="text" formControlName="id">
+          <br />
+          <label for="name">Tournament Name</label> <br />
+          <input [readOnly]="true" id="name" type="text" formControlName="name">
+        </form>-->
+      </div>
+    </div>
+  </div>

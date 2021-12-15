@@ -1,13 +1,28 @@
-<h1>List of users</h1>
-<div class="centerList">
-<ul *ngIf="$users | async as userList">
-  <li *ngFor="let user of userList.userList">
-    #{{ user.id }} - Name: {{ user.username }} - <a routerLink="details/{{ user.id }}">Details</a> - <a routerLink="update/{{ user.id}}">Edit</a> - <a routerLink="delete/{{ user.id }}">Delete</a>
-  </li>
-</ul>
-</div>
-<div class="homeBtn">
-<a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div *ngIf="$error" class="alert alert-danger">
+      <div class="text-center">
+        {{ $error }}
+      </div>
+    </div>
+
+    <div *ngIf="$users | async as userList">
+      <h1>List of users</h1>
+      <div class="info-box text-center" *ngFor="let user of userList.userList">
+        <h1> {{ user.username }}</h1>
+        <h5>Id: {{ user.id }}</h5>
+        <img class="img-fluid" src="https://i1.sndcdn.com/avatars-isQpTzkkjxzRPrxp-yK9v3w-t500x500.jpg" />
+        <div class="col user-info">
+          <button type="button" class="btn btn-primary" routerLink="details/{{ user.id }}">Details</button>
+          <button type="button" class="btn btn-warning" routerLink="update/{{ user.id}}">Edit</button>
+          <button type="button" class="btn btn-danger" routerLink="delete/{{ user.id }}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="homeBtn">
+    <a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+  </div>
 </div>
 <div class="createBtn">
   <a routerLink="create" class="btn btn-sm btn-primary">Create a user</a>
