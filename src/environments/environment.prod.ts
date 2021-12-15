@@ -5,3 +5,8 @@ export const environment = {
   secretIdentifier: 'Bearer',
   tokenSplitter: '|',
 };
+
+export const roles = {
+  admin: 'Administrator',
+  user: 'User',
+};
