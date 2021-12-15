@@ -1,42 +1,58 @@
-<h1>Log In</h1>
-<div *ngIf="$success" class="alert alert-success">
-  <div class="text-center">
-    {{ $success }}
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="info-box text-center">
+      <h1>Log In</h1>
+      <div *ngIf="$success" class="alert alert-success">
+        <div class="text-center">
+          {{ $success }}
+        </div>
+      </div>
+
+      <div *ngIf="$error" class="alert alert-danger">
+        <div class="text-center">
+          {{ $error }}
+        </div>
+      </div>
+      <!--<div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="username?.errors?.['required']">
+          Username is required.
+        </div>
+
+        <div *ngIf="username?.errors?.['minlength']">
+          Username requires atleast 3 characters.
+        </div>
+
+        <div *ngIf="password?.errors?.['required']">
+          Password is required.
+        </div>
+
+        <div *ngIf="password?.errors?.['minlength']">
+          Password requires atleast 3 characters.
+        </div>
+      </div>-->
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <!-- Username -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+          </div>
+          <input formControlName="username" id="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+
+        <!-- Password -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+          </div>
+          <input formControlName="password" id="password" type="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Log In</button>
+      </form>
+    </div>
   </div>
 </div>
-
-<div *ngIf="$error" class="alert alert-danger">
-  <div class="text-center">
-    {{ $error }}
-  </div>
-</div>
-<!--<div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
-     class="alert alert-danger">
-
-  <div *ngIf="username?.errors?.['required']">
-    Username is required.
-  </div>
-
-  <div *ngIf="username?.errors?.['minlength']">
-    Username requires atleast 3 characters.
-  </div>
-
-  <div *ngIf="password?.errors?.['required']">
-    Password is required.
-  </div>
-
-  <div *ngIf="password?.errors?.['minlength']">
-    Password requires atleast 3 characters.
-  </div>
-</div>-->
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-
-  <label for="username">Username: </label>
-  <input id="username" type="text" formControlName="username" required>
-
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password" required>
-
-  <button type="submit">Log In</button>
-</form>

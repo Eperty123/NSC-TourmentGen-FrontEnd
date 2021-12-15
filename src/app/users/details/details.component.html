@@ -1,9 +1,24 @@
-<div class="detailsCenter">
-<form [formGroup]="detailsForm">
-  <label for="id">User ID</label><br />
-  <input [readOnly]="true" id="id" type="text" formControlName="id">
-  <br />
-  <label for="username">UserName</label> <br />
-  <input [readOnly]="true" id="username" type="text" formControlName="username">
-</form>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div class="info-box text-center">
+      <form [formGroup]="detailsForm">
+
+        <!-- Id-->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Id</span>
+          </div>
+          <input [readOnly]="true" formControlName="id" id="id" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <!-- Username -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+          </div>
+          <input [readOnly]="true" formControlName="username" id="username" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
