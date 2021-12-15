@@ -11,6 +11,7 @@ import { take, tap } from 'rxjs/operators'
 })
 export class AuthService {
   isLoggedIn$ = new BehaviorSubject<string | null>(this.getToken());
+  private role = new BehaviorSubject<string | null>(null);
 
   constructor(private _http: HttpClient) { }
 
@@ -20,9 +21,17 @@ export class AuthService {
       .pipe(
         tap(token => {
           if (token && token.jwt) {
-            // Save the token.
-            localStorage.setItem(environment.loginTokenName, token.jwt);
-            this.isLoggedIn$.next(token.jwt);
+
+            // Split the token content.
+            var tokenSplitter = environment.tokenSplitter;
+            var tokenContent = token.jwt.split(tokenSplitter);
+            var jwtToken = tokenContent[1] as string;
+            var role = atob(tokenContent[0]);
+
+            // Save the token and role...
+            localStorage.setItem(environment.loginTokenName, jwtToken);
+            this.isLoggedIn$.next(jwtToken);
+            this.role.next(role);
           } else this.logout();
         })
       )
@@ -31,6 +40,7 @@ export class AuthService {
   logout(): Observable<boolean> {
     localStorage.removeItem(environment.loginTokenName);
     this.isLoggedIn$.next(null);
+    this.role.next(null);
     return of(true).pipe(take(1));
   }
 
@@ -40,5 +50,9 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem(environment.loginTokenName);
+  }
+
+  getRole(): string {
+    return this.role.getValue() as string;
   }
 }
