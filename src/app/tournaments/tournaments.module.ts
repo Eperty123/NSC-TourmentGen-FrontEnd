@@ -7,6 +7,7 @@ import {DetailsComponent} from "./details/details.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import { DeleteComponent } from './delete/delete.component';
 import { UpdateComponent } from './update/update.component';
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { UpdateComponent } from './update/update.component';
     ListComponent,
     DetailsComponent,
     DeleteComponent,
-    UpdateComponent
+    UpdateComponent,
+    CreateComponent
   ],
   imports: [
     CommonModule,

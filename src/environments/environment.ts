@@ -7,8 +7,13 @@ export const environment = {
   api: 'https://localhost:5001/api',
   loginTokenName: 'loginToken',
   secretIdentifier: 'Bearer',
+  tokenSplitter: '|',
 };
 
+export const roles = {
+  admin: 'Administrator',
+  user: 'User',
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
