@@ -20,4 +20,8 @@ export class AppComponent {
   isLoggedIn(): boolean {
     return this._authService.isLoggedIn() != null;
   }
+
+  getRole(): string {
+    return this._authService.getRole();
+  }
 }

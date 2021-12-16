@@ -3,8 +3,10 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { TournamentList } from './tournament-list';
-import {UserDto} from "../../users/shared/user.dto";
-import {TournamentDto} from "./tournament.dto";
+import { UserDto } from "../../users/shared/user.dto";
+import { TournamentDto } from "./tournament.dto";
+import { TournamentInputDto } from './tournamentinput.dto';
+import { WinnerDto } from './winner.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,13 @@ import {TournamentDto} from "./tournament.dto";
 export class TournamentService {
 
   constructor(private _http: HttpClient) {
+  }
+
+  createTournament(name: string, participants: string): Observable<TournamentDto> {
+    return this._http.post<TournamentDto>(environment.api + '/tournament', {
+      name,
+      participants
+    });
   }
 
   getTournaments(): Observable<TournamentList> {
@@ -32,6 +41,9 @@ export class TournamentService {
   updateTournament(tournament: TournamentDto): Observable<TournamentDto> {
     return this._http
       .put<TournamentDto>(environment.api + '/Tournament/' + tournament.id, tournament);
+  }
 
+  makeWinner(winnerDto: WinnerDto): Observable<TournamentDto> {
+    return this._http.put<TournamentDto>(environment.api + "/tournament/winner/" + winnerDto.tournamentId, winnerDto);
   }
 }

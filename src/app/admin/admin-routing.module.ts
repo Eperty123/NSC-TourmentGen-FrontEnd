@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from '../tournaments/list/list.component';
+import { AdminGuard } from './guards/admin.guard';
 const routes: Routes = [
   {
     path: 'tournaments',
-    component: ListComponent,
+    component: ListComponent, canActivate: [AdminGuard],
   },
 ];
 

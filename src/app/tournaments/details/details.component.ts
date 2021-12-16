@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {UsersService} from "../../users/shared/users.service";
-import {TournamentDto} from "../shared/tournament.dto";
-import {TournamentService} from "../shared/tournament.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+import { UsersService } from "../../users/shared/users.service";
+import { TournamentDto } from "../shared/tournament.dto";
+import { TournamentService } from "../shared/tournament.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { WinnerDto } from '../shared/winner.dto';
 
 @Component({
   selector: 'app-NSC-details',
@@ -12,15 +13,23 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class DetailsComponent implements OnInit {
 
-  private selectedId : number | undefined
-  public  selectedTournament : TournamentDto | undefined
+  private selectedId: number | undefined
+  public selectedTournament: TournamentDto | undefined
 
-  detailsForm = new FormGroup( {
+  detailsForm = new FormGroup({
     id: new FormControl({ disabled: true }),
     name: new FormControl('', Validators.required)
   });
 
-  constructor(private _route : ActivatedRoute, private _router : Router, private _tournamentService : TournamentService) { }
+  winnerForm = new FormGroup({
+    participantId: new FormControl({ disabled: true }),
+    roundId: new FormControl({ disabled: true }),
+    bracketId: new FormControl({ disabled: true }),
+    tournamentId: new FormControl({ disabled: true }),
+  });
+
+
+  constructor(private _route: ActivatedRoute, private _router: Router, private _tournamentService: TournamentService) { }
 
 
   ngOnInit(): void {
@@ -32,5 +41,11 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  makeWinner() {
+    var winnerDto = this.winnerForm.value as WinnerDto;
+    this._tournamentService.makeWinner(winnerDto).subscribe(res => {
+      location.reload();
+    });
+  }
 
 }
