@@ -41,9 +41,14 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  makeWinner() {
-    var winnerDto = this.winnerForm.value as WinnerDto;
-    this._tournamentService.makeWinner(winnerDto).subscribe(res => {
+    makeWinner(bracketId: number, participantId: number, roundId: number) {
+    //var winnerDto = this.winnerForm.value as WinnerDto;
+    this._tournamentService.makeWinner({
+      bracketId: bracketId,
+        participantId : participantId,
+          roundId: roundId,
+          tournamentId: this.selectedTournament?.id
+      }).subscribe(res => {
       location.reload();
     });
   }
