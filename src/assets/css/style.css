@@ -36,3 +36,8 @@
 th {
   text-align: center;
 }
+
+button a {
+  text-decoration: none;
+  color: #fff;
+}

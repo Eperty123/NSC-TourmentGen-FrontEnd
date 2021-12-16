@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-4 offset-4">
+  <div class="col-12">
     <div class="info-box text-center">
       <div class="col-12" *ngIf="selectedTournament != null">
         <div class="tournament-title"><h1>{{selectedTournament.name }}</h1></div>
@@ -7,16 +7,17 @@
         <div class="tournament-bracket tournament-bracket--rounded">
           <div class="tournament-bracket__round tournament-bracket__round--quarterfinals" *ngFor="let round of selectedTournament.rounds">
             <h3 class="tournament-bracket__round-title">{{round.name}}</h3>
+            <h4>Bracket Count: {{ round.brackets.length }}</h4>
 
             <!-- Brackets -->
             <ul class="tournament-bracket__list text-center" *ngIf="round.brackets.length > 0">
-
               <!-- Loop through each bracket <3.-->
               <li class="tournament-bracket__item" *ngFor="let bracket of round.brackets">
                 <div class="tournament-bracket__match" tabindex="0">
                   <table class="tournament-bracket__table">
                     <caption class="tournament-bracket__caption">
-                      {{ bracket.round?.name }}
+                      Id: {{ bracket.id }}
+                      Winner: {{bracket.winnerId }}
                     </caption>
                     <tbody class="tournament-bracket__content">
 
@@ -26,9 +27,20 @@
 
                         <!-- Must be reversed as for some reason 2 is first and 1 is second??? -->
                         <!-- Participant 1 -->
-                        <th>{{ bracket.participant2?.name }}</th>
+                        <th>
+                          Id: {{bracket.participant1?.id}}, {{ bracket.participant1?.name }}
+
+                          <form *ngIf="bracket.participant1?.name != ''" [formGroup]="winnerForm" (ngSubmit)="makeWinner()">
+                            <input [readOnly]="true" id="id" type="hidden" [ngModel]="bracket.participant1?.id" formControlName="participantId">
+                            <input [readOnly]="true" id="roundId" type="hidden" [ngModel]="round?.id" formControlName="roundId">
+                            <input [readOnly]="true" id="tournamentId" type="hidden" [ngModel]="selectedTournament?.id" formControlName="tournamentId">
+                            <input [readOnly]="true" id="bracketId" type="hidden" [ngModel]="bracket?.id" formControlName="bracketId">
+                            <button type="submit" class="btn btn-success">Make winner</button>
+                          </form>
+                          <button *ngIf="bracket.participant1?.name != ''" type="button" class="btn btn-success"><a routerLink="">Make winner</a></button>
+                        </th>
                         <!-- Participant 2 -->
-                        <th>{{ bracket.participant1?.name }}</th>
+                        <th>Id: {{bracket.participant2?.id}}, {{ bracket.participant2?.name }}</th>
                       </tr>
                     </tbody>
                   </table>

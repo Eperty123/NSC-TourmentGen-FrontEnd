@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-12">
+    <div class="info-box text-center">
+      <h1>Create Tournament</h1>
+
+      <form [formGroup]="createForm" (ngSubmit)="createTournament()">
+
+        <!-- Name -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+          </div>
+          <input formControlName="name" id="name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+
+        <!-- Participants -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Participants</span>
+          </div>
+          <textarea class="form-control" id="participants" formControlName="participants" rows="15"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Generate</button>
+      </form>
+    </div>
+  </div>
+</div>

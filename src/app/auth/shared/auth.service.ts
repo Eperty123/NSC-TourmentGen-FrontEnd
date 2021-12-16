@@ -58,6 +58,7 @@ export class AuthService {
 
   getRole(): string {
     var encodedRole = this.getToken()?.split(environment.tokenSplitter)[0] as string
-    return atob(encodedRole);
+    if (encodedRole) return atob(encodedRole);
+    return "";
   }
 }
