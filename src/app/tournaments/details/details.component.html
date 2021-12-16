@@ -30,13 +30,14 @@
                         <th>
                           Id: {{bracket.participant1?.id}}, {{ bracket.participant1?.name }}
 
-                          <form *ngIf="bracket.participant1?.name != ''" [formGroup]="winnerForm" (ngSubmit)="makeWinner()">
-                            <input [readOnly]="true" id="id" type="hidden" [ngModel]="bracket.participant1?.id" formControlName="participantId">
-                            <input [readOnly]="true" id="roundId" type="hidden" [ngModel]="round?.id" formControlName="roundId">
-                            <input [readOnly]="true" id="tournamentId" type="hidden" [ngModel]="selectedTournament?.id" formControlName="tournamentId">
-                            <input [readOnly]="true" id="bracketId" type="hidden" [ngModel]="bracket?.id" formControlName="bracketId">
-                            <button type="submit" class="btn btn-success">Make winner</button>
-                          </form>
+                          <div *ngIf="bracket.participant1?.name != ''"
+                               [formGroup]="winnerForm">
+                            <button
+                              (click)="makeWinner(bracket.id,bracket.participant1.id,round.id)"
+                              type="button"
+                              class="btn btn-success">Make winner
+                            </button>
+                          </div>
                           <button *ngIf="bracket.participant1?.name != ''" type="button" class="btn btn-success"><a routerLink="">Make winner</a></button>
                         </th>
                         <!-- Participant 2 -->
