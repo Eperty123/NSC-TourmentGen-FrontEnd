@@ -1,12 +1,23 @@
-<h1>List of tournaments</h1>
-<div class="tourneyList">
-<ul *ngIf="$tournaments | async as tournaments">
-  <li *ngFor="let tournament of tournaments.tournamentList">
-    #{{ tournament.id }} - Name: {{ tournament.name }} - <a routerLink="details/{{ tournament.id }}">Details</a> - <a routerLink="update/{{ tournament.id}}">Edit</a> - <a routerLink="delete/{{ tournament.id }}">Delete</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-4 offset-4">
+    <div *ngIf="$tournaments | async as tournaments">
+      <h1>List of tournaments</h1>
+      <div class="info-box text-center" *ngFor="let tournament of tournaments.tournamentList">
+        <h1> {{ tournament.name }}</h1>
+        <img class="img-fluid" src="https://i1.sndcdn.com/avatars-isQpTzkkjxzRPrxp-yK9v3w-t500x500.jpg" />
+        <div class="col user-info">
+          <button type="button" class="btn btn-primary" routerLink="details/{{ tournament.id }}">Details</button>
+          <button type="button" class="btn btn-warning" routerLink="update/{{ tournament.id}}">Edit</button>
+          <button type="button" class="btn btn-danger" routerLink="delete/{{ tournament.id }}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="homeBtn">
+    <a routerLink="create" class="btn btn-sm btn-primary">Create</a>
+  </div>
 </div>
-<div class="homeBtn">
-  <a style="margin-right: 30px" routerLink="create" class="btn btn-sm btn-primary">Create New Tournament</a>
-  <a routerLink="" class="btn btn-sm btn-primary">Back to frontpage</a>
+<div class="createBtn">
+  <a routerLink="/" class="btn btn-sm btn-primary">Home</a>
 </div>
+

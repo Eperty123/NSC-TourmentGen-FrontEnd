@@ -10,4 +10,5 @@ export interface BracketDto {
   roundId: number;
   round: RoundDto;
   winnerId: number;
+  isExecuted: boolean;
 }

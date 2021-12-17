@@ -5,9 +5,10 @@
         <div class="tournament-title"><h1>{{selectedTournament.name }}</h1></div>
 
         <div class="tournament-bracket tournament-bracket--rounded">
-          <div class="tournament-bracket__round tournament-bracket__round--quarterfinals" *ngFor="let round of selectedTournament.rounds">
+          <div class="tournament-bracket__round tournament-bracket__round--quarterfinals" *ngFor="let round of selectedTournament.rounds; index as i;">
             <h3 class="tournament-bracket__round-title">{{round.name}}</h3>
-            <h4>Bracket Count: {{ round.brackets.length }}</h4>
+            <h4>Round Id: {{ round.id }}</h4>
+            <h6>Bracket Count: {{ round.brackets.length }}</h6>
 
             <!-- Brackets -->
             <ul class="tournament-bracket__list text-center" *ngIf="round.brackets.length > 0">
@@ -28,20 +29,28 @@
                         <!-- Must be reversed as for some reason 2 is first and 1 is second??? -->
                         <!-- Participant 1 -->
                         <th>
-                          Id: {{bracket.participant1?.id}}, {{ bracket.participant1?.name }}
+                          <div *ngIf="bracket.participant1.name != null and bracket.participant1.name != ''">
+                            Id: {{bracket.participant1?.id}}, {{ bracket.participant1?.name }}
 
-                          <div *ngIf="bracket.participant1?.name != ''"
-                               [formGroup]="winnerForm">
-                            <button
-                              (click)="makeWinner(bracket.id,bracket.participant1.id,round.id)"
-                              type="button"
-                              class="btn btn-success">Make winner
+                            <button *ngIf="!bracket.isExecuted and i >= selectedTournament.rounds?.length" (click)="makeWinner(bracket.id,bracket.participant1.id,round.id)"
+                                    type="button"
+                                    class="btn btn-success">
+                              Make winner
                             </button>
                           </div>
-                          <button *ngIf="bracket.participant1?.name != ''" type="button" class="btn btn-success"><a routerLink="">Make winner</a></button>
                         </th>
                         <!-- Participant 2 -->
-                        <th>Id: {{bracket.participant2?.id}}, {{ bracket.participant2?.name }}</th>
+                        <th>
+                          <div *ngIf="bracket.participant2.name != null and bracket.participant2.name != ''">
+                            Id: {{bracket.participant2?.id}}, {{ bracket.participant2?.name }}
+
+                            <button *ngIf="!bracket.isExecuted and i >= selectedTournament.rounds?.length" (click)="makeWinner(bracket.id,bracket.participant2.id,round.id)"
+                                    type="button"
+                                    class="btn btn-success">
+                              Make winner
+                            </button>
+                          </div>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
