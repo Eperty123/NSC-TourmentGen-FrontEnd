@@ -9,4 +9,5 @@ export interface TournamentDto {
   rounds: RoundDto[];
   userId: number;
   user: UserDto;
+  currentRoundId: number;
 }
